@@ -1,5 +1,45 @@
 # Liftoff Changelog #
 
+## Liftoff 1.6.0 - 25 Sept 2015 ##
+
+### New Features ###
+
+* Add Carthage support. You can now set the `dependency_managers` to one or
+  more dependency management systems. Right now, this supports `cocoapods` and
+  `carthage`. This also adds a `--dependency-managers` flag to the cli
+  options. The `--[no-]cocoapods` option will be removed in a future version of
+  Liftoff, and so should not be used further. - [Jake Craige][liftoff#226]
+* Define custom build configurations. You can now set a `build_configurations`
+  key in your `liftoffrc` to define custom build configurations that can be
+  used elsewhere in your `liftoffrc`. These configurations need to be copies
+  of either the `release` or `debug` schemes. See the `liftoffrc` man page for
+  more info. - [Marcelo Fabri][liftoff#224] (Thanks to [Mark
+  Adams][liftoff#71])
+* Define custom schemes in your `liftoffrc.` By default, this isn't set, but
+  if you set `schemes` in your `liftoffrc`, Liftoff will generate a scheme
+  with the specified actions. See the `liftoffrc` man page for more info. -
+  [Marcelo Fabri][liftoff#225]
+
+[liftoff#71]: https://github.com/thoughtbot/liftoff/pull/71
+[liftoff#226]: https://github.com/thoughtbot/liftoff/pull/226
+[liftoff#224]: https://github.com/thoughtbot/liftoff/pull/224
+[liftoff#225]: https://github.com/thoughtbot/liftoff/pull/225
+
+### Changes ###
+
+* `bundle_version` now uses `git rev-list --count` instead of `git rev-list |
+  wc -l | tr -d ' '` - [Giovanni Lodi][liftoff#221]
+
+[liftoff#221]: https://github.com/thoughtbot/liftoff/pull/221
+
+### Bug Fixes ###
+
+* Storyboards and XIBs are now properly treated as resources. Previously, they
+  were added to Compile Sources, which could lead to crashes in some versions
+  of Xcode. - [Marcelo Fabri][liftoff#238]
+
+[liftoff#238]: https://github.com/thoughtbot/liftoff/pull/238
+
 ## Liftoff 1.5.0 - 13 Feb 2015 ##
 
 ### New Features ###
